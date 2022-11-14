@@ -60,7 +60,7 @@ export default function SignIn() {
                                     </div>
 
                                     <button type="submit">Sign In</button>
-                                    <span className="dont-account">Don't have an account? <Link href="/sign-up"><a>Sign Up Now!</a></Link></span>
+                                    <span className="dont-account">Need an account? <Link href="/sign-up"><a>Sign Up Now!</a></Link></span>
                                 </form>
                             </div>
                         </div>
