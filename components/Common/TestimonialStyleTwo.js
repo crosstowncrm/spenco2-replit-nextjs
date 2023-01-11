@@ -1,22 +1,10 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-const OwlCarousel = dynamic(import('react-owl-carousel3'));
-
-const options = {
-    items: 1,
-    nav: true,
-    loop: true,
-    margin: 30,
-    dots: false,
-    autoplay: true,
-    animateIn: 'fadeIn',
-    animateOut: 'fadeOut',
-    autoplayHoverPause: true,
-    navText: [
-        "<i class='flaticon-left-arrow'></i>",
-        "<i class='flaticon-right-arrow'></i>"
-    ]
-};
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import Swiper and modules styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation } from "swiper";
 
 const TestimonialStyleTwo = () => {
     const [display, setDisplay] = React.useState(false);
@@ -34,10 +22,8 @@ const TestimonialStyleTwo = () => {
                         <h2>What Our Customers Say</h2>
                     </div>
 
-                    {display ? <OwlCarousel 
-                        className="marketing-testimonials-slides owl-carousel owl-theme"
-                        {...options}
-                    >  
+                    <Swiper navigation={true} modules={[Navigation]} className="marketing-testimonials-slides mySwiper owl-carousel owl-theme">
+                    <SwiperSlide>  
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-12">
                                 <div className="marketing-testimonials-image">
@@ -57,7 +43,8 @@ We look forward to working with you again, should we decide to sell any other pr
                                 </div>
                             </div>
                         </div>
-
+                    </SwiperSlide>
+                    <SwiperSlide>
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-12">
                                 <div className="marketing-testimonials-image">
@@ -76,7 +63,8 @@ We look forward to working with you again, should we decide to sell any other pr
                                 </div>
                             </div>
                         </div>
-                    </OwlCarousel> : ''}
+                    </SwiperSlide>
+                    </Swiper>
                 </div>
             </div>
         </>

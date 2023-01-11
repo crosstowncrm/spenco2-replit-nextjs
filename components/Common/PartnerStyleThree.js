@@ -1,6 +1,10 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
-const OwlCarousel = dynamic(import('react-owl-carousel3'));
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// import Swiper and modules styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation } from "swiper";
 
 const options = {
     nav: false,
@@ -49,46 +53,66 @@ const PartnerStyleThree = () => {
                         <h2>Trusted by 50k Clients</h2>
                     </div>
 
-                    {display ? <OwlCarousel 
-                        className="partner-slides owl-carousel owl-theme"
-                        {...options}
-                    > 
+                    <Swiper
+                        slidesPerView={3}
+                        spaceBetween={30}
+                        slidesPerGroup={3}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        loop={true}
+                        loopFillGroupWithBlank={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                    navigation={true}
+                    modules={[Navigation]}
+                    className="partner-slides mySwiper owl-carousel owl-theme"
+                >
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white1.png" alt="image" />
                             </a>
                         </div>
-
+                        </SwiperSlide>
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white2.png" alt="image" />
                             </a>
                         </div>
-
+                        </SwiperSlide>
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white3.png" alt="image" />
                             </a>
                         </div>
-
+                        </SwiperSlide>
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white4.png" alt="image" />
                             </a>
                         </div>
-
+                        </SwiperSlide>
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white5.png" alt="image" />
                             </a>
                         </div>
-
+                        </SwiperSlide>
+                        <SwiperSlide>
                         <div className="partner-item">
                             <a href="#" className="d-inline-block" target="_blank">
                                 <img src="/images/partner/partner-white6.png" alt="image" />
                             </a>
                         </div>
-                    </OwlCarousel> : ''}
+                        </SwiperSlide>
+                    </Swiper>
                 </div>
             </div>
         </>

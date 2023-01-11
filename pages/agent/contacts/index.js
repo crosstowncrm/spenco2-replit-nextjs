@@ -1,18 +1,16 @@
+import React, { useState } from 'react'
 import Contacts from "../../../components/Agent/Contacts";
 import AgentLayout from "../../../components/_App/AgentLayout";
-import { fetcher } from "../../../lib/api";
-import useSWR from 'swr';
-import { useState } from "react";
+import Navbar from "../../../components/_App/NavbarTwo";
+import PageBannerStyleOne from "../../../components/Common/PageBanner/PageBannerStyleOne";
+import Link from 'next/link';
+import Footer from '../../../components/_App/Footer';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { GET_ALL_CONTACTS } from '../../../graphql/agent/queries';
+import { DateTime } from 'luxon'
 
-const ContactsList = ({ contacts }) => {
+export default function ContactsList({ contacts }) {
     const [pageIndex, setPageIndex] = useState(1);
-    const { data } = useSWR(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/contacts?pagination[page]=${pageIndex}&pagination[pageSize]=3`, 
-        fetcher, 
-        {
-            fallbackData: contacts
-        }
-    );
     return (
         <AgentLayout>
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter mb-4">
@@ -20,45 +18,26 @@ const ContactsList = ({ contacts }) => {
                     Contacts
                 </span>
             </h1>
-            <Contacts contacts={data} />
-            <div className="space-x-2 space-y-2">
-                <button
-                    className={`md:p-2 rounded py-2 text-black text-white p-2 ${
-                    pageIndex === 1 ? 'bg-gray-300' : 'bg-blue-400'
-                    }`}
-                    disabled={pageIndex === 1}
-                    onClick={() => setPageIndex(pageIndex - 1)}
-                >
-                    {' '}
-                    Previous
-                </button>
-                <button
-                    className={`md:p-2 rounded py-2 text-black text-white p-2 ${
-                    pageIndex === (data && data.meta.pagination.pageCount)
-                      ? 'bg-gray-300'
-                      : 'bg-blue-400'
-                    }`}
-                    disabled={pageIndex === (data && data.meta.pagination.pageCount)}
-                    onClick={() => setPageIndex(pageIndex + 1)}
-                >
-                  Next
-                </button>
-                <span>{`${pageIndex} of ${
-                  data && data.meta.pagination.pageCount
-                }`}</span>
-            </div>
+            <Contacts contacts={contacts} />
+            
         </AgentLayout>
     );
 };
 
-export async function getStaticProps() {
-    const contactsResponse = await fetcher(`${process.env.NEXT_PUBLIC_STRAPI_URL}/contacts?pagination[page]=1&pagination[pageSize]=3`);
-    console.log(contactsResponse);
+export async function getServerSideProps() {
+
+    const client = new ApolloClient({
+        uri: "http://localhost:1337/graphql",
+        cache: new InMemoryCache()
+    });
+
+    const { data } = await client.query({
+        query: GET_ALL_CONTACTS
+      })
+ 
     return {
         props: {
-            contacts: contactsResponse
+          contacts: data.contacts.data
         }
-    };
-};
-
-export default ContactsList;
+    }
+}

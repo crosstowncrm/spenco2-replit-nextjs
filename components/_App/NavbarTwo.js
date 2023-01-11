@@ -240,7 +240,7 @@ const NavbarTwo = () => {
                                             </li> 
 
                                             <li className="nav-item">
-                                                <Link href="/our-clients" activeClassName="active">
+                                                <Link href="/commercial/faq" activeClassName="active">
                                                     <a onClick={toggleNavbar} className="nav-link">FAQ</a>
                                                 </Link>
                                             </li>

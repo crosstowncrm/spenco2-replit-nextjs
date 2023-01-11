@@ -5,10 +5,15 @@ import Link from 'next/link';
 import Footer from '../../components/_App/Footer';
 import BlogSidebar from '../../components/Blog/BlogSidebar';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { GET_ALL_POSTS } from '../../graphql/queries';
-import { DateTime } from 'luxon'
+import { GET_ALL_TAG_SLUGS, GET_POSTS_BY_TAG } from '../../graphql/queries';
+//import { getTags, getPostsByTag } from "../../services/tag.service";
 
-export default function BlogRightSidebar({ posts }) {
+const client = new ApolloClient({
+    uri: "http://localhost:1337/graphql",
+    cache: new InMemoryCache()
+});
+
+export default function TagRightSidebar({ posts }) {
     console.log(posts);
     return (
         <>
@@ -32,7 +37,7 @@ export default function BlogRightSidebar({ posts }) {
                                 <div key={i} className="col-lg-6 col-md-6">
                                     <div className="single-post-item startup-color">
                                         <div className="post-image">
-                                            <Link href={`/blog/${val.attributes.slug}`}>
+                                            <Link href={`/blog/${val.slug}`}>
                                                 <a className="d-block">
                                                     <img src={val.attributes.blogImage.data.attributes.url} alt="image" />
                                                 </a>
@@ -41,7 +46,7 @@ export default function BlogRightSidebar({ posts }) {
 
                                         <div className="post-content">
                                             <ul className="meta">
-                                                <li><i className="far fa-calendar-alt"></i>{DateTime.now(val.attributes.updatedAt).toFormat('MMMM dd, yyyy')}</li>
+                                                <li><i className="far fa-calendar-alt"></i>{val.date}</li>
                                                 <li><i className="far fa-user-circle"></i> <Link href="/blog"><a>Shelley Percy</a></Link></li>
                                             </ul>
 
@@ -93,20 +98,41 @@ export default function BlogRightSidebar({ posts }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
 
-    const client = new ApolloClient({
-        uri: "http://localhost:1337/graphql",
-        cache: new InMemoryCache()
-    });
+    const { data } = await client.query({ query: GET_ALL_TAG_SLUGS });
+
+    const paths = data.tags.data.map((tag) => {
+        return { params: { slug: tag.attributes.url } }
+    })  ;
+
+    console.log(paths);
+
+    return {
+        paths,
+        fallback: false
+    }
+}
+
+export async function getStaticProps({ params }) {
 
     const { data } = await client.query({
-        query: GET_ALL_POSTS
-      })
- 
+        query: GET_POSTS_BY_TAG,
+        variables: { slugUrl: params.slug }
+    });
+
+    const attrs = data.tags.data[0].attributes;
+    const posts = attrs.posts.data;
+
+//    const blogPosts = attrs.posts.data;
+
+    //const postTags = attrs.tags.data;
+
+    //const html = await serialize(attrs.content);
+
     return {
         props: {
-          posts: data.posts.data
+            posts: attrs.posts.data
         }
     }
 }
