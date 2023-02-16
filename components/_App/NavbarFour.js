@@ -114,37 +114,37 @@ const NavbarFour = () => {
 
                                                 <ul className="dropdown-menu">
                                                 <li className="nav-item">
-                                                        <Link href="/commercial/services/Acquisitions" activeClassName="active">
+                                                        <Link href="/commercial/services/acquisitions" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Acquisitions</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/services/Dispositions" activeClassName="active">
+                                                        <Link href="/commercial/services/dispositions" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Dispositions</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/services/Investor_Services" activeClassName="active">
+                                                        <Link href="/commercial/services/investor-services" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Investor Services</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/services/Market_Analysis" activeClassName="active">
+                                                        <Link href="/commercial/services/market-analysis" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Market Analysis</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/services/Site_Selection" activeClassName="active">
+                                                        <Link href="/commercial/services/site-selection" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Site Selection</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/services/1031Exchanges" activeClassName="active">
+                                                        <Link href="/commercial/services/1031-exchanges" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">1031 Exchanges</a>
                                                         </Link>
                                                     </li>
@@ -160,37 +160,37 @@ const NavbarFour = () => {
 
                                                 <ul className="dropdown-menu">
                                                     <li className="nav-item">
-                                                        <Link href="/commercial/sectors/Multifamily" activeClassName="active">
+                                                        <Link href="/commercial/sectors/multifamily" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Multifamily</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/services-2" activeClassName="active">
+                                                        <Link href="/commercial/sectors/industrial" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Industrial</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/services-2" activeClassName="active">
+                                                        <Link href="/commercial/sectors/retail" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Retail</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/services-2" activeClassName="active">
-                                                            <a onClick={toggleNavbar} className="nav-link">Hospitality</a>
+                                                        <Link href="/commercial/sectors/land" activeClassName="active">
+                                                            <a onClick={toggleNavbar} className="nav-link">Land</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/services-2" activeClassName="active">
+                                                        <Link href="/commercial/sectors/office" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Office</a>
                                                         </Link>
                                                     </li>
 
                                                     <li className="nav-item">
-                                                        <Link href="/services-2" activeClassName="active">
+                                                        <Link href="/commercial/sectors/self-storage" activeClassName="active">
                                                             <a onClick={toggleNavbar} className="nav-link">Self Storage</a>
                                                         </Link>
                                                     </li>

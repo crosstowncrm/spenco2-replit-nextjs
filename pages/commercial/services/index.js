@@ -3,8 +3,11 @@ import NavbarFour from "../../../components/_App/NavbarFour";
 import PageBannerStyleThree from "../../../components/Common/PageBanner/PageBannerStyleThree";
 import Link from 'next/link';
 import FooterThree from '../../../components/_App/FooterThree';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { GET_ALL_SERVICES } from '../../../graphql/queries';
+import { DateTime } from 'luxon'
 
-const Services2 = () => {
+export default function Services({ services }) {
     return (
         <>
             <NavbarFour />
@@ -25,104 +28,24 @@ const Services2 = () => {
                     </div>
 
                     <div className="row justify-content-center">
-                        <div className="col-lg-4 col-md-6 col-sm-6">
+                        {services.map((val, i) => {
+                        return (
+                        <div key={i} className="col-lg-4 col-md-6 col-sm-6">
                             <div className="single-services-item">
-                                <img src="/images/services/services-img4.jpg" alt="image" />
+                                <img src={val.attributes.serviceBanner.data.attributes.url} alt="image" />
                                 <div className="content">
                                     <h3>
-                                        <Link href="/services-details">
-                                            <a>Digital Marketing</a>
+                                        <Link href={`/commercial/services/${val.attributes.slug}`}>
+                                            <a>{val.attributes.serviceName}</a>
                                         </Link>
                                     </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
+                                    <p>{val.attributes.serviceSummary}</p>
                                 </div>
                             </div>
                         </div>
+                        )
+                        })}
 
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="single-services-item">
-                                <img src="/images/services/services-img5.jpg" alt="image" />
-                                <div className="content">
-                                    <h3>
-                                        <Link href="/services-details">
-                                            <a>Strategy & Planning</a>
-                                        </Link>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="single-services-item">
-                                <img src="/images/services/services-img6.jpg" alt="image" />
-                                <div className="content">
-                                    <h3>
-                                        <Link href="/services-details">
-                                            <a>Search Engine Optimization</a>
-                                        </Link>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="single-services-item">
-                                <img src="/images/services/services-img1.jpg" alt="image" />
-                                <div className="content">
-                                    <h3>
-                                        <Link href="/services-details">
-                                            <a>Start Up Advisory Solutions</a>
-                                        </Link>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="single-services-item">
-                                <img src="/images/services/services-img2.jpg" alt="image" />
-                                <div className="content">
-                                    <h3>
-                                        <Link href="/services-details">
-                                            <a>Business Incorporation</a>
-                                        </Link>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-sm-6">
-                            <div className="single-services-item">
-                                <img src="/images/services/services-img3.jpg" alt="image" />
-                                <div className="content">
-                                    <h3>
-                                        <Link href="/services-details">
-                                            <a>Consulting Services</a>
-                                        </Link>
-                                    </h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur elit adipiscing labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-12 col-md-12 col-sm-12">
-                            <div className="pagination-area text-center">
-                                <a href="#" className="next page-numbers">
-                                    <i className="fas fa-chevron-left"></i>
-                                </a>
-                                <a href="#" className="page-numbers current">1</a>
-                                <a href="#" className="page-numbers">2</a>
-                                <a href="#" className="page-numbers">3</a>
-                                <a href="#" className="page-numbers">4</a>
-                                <a href="#" className="next page-numbers">
-                                    <i className="fas fa-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -132,4 +55,20 @@ const Services2 = () => {
     )
 }
 
-export default Services2;
+export async function getStaticProps() {
+
+    const client = new ApolloClient({
+        uri: "http://localhost:1337/graphql",
+        cache: new InMemoryCache()
+    });
+
+    const { data } = await client.query({
+        query: GET_ALL_SERVICES
+      })
+ 
+    return {
+        props: {
+          services: data.services.data
+        }
+    }
+}

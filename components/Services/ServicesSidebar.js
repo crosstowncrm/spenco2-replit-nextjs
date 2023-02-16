@@ -19,32 +19,32 @@ const ServicesSidebar = () => {
 
                     <ul>
                         <li>
-                            <Link href="/commercial/services/Acquisitions">
+                            <Link href="/commercial/services/acquisitions">
                                 <a>Acquisitions <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Dispositions">
+                            <Link href="/commercial/services/dispositions">
                                 <a>Dispositions <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Investor_Services">
+                            <Link href="/commercial/services/investor-services">
                                 <a>Investor Services <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Market_Analysis">
+                            <Link href="/commercial/services/market-analysis">
                                 <a>Market Analysis <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Site_Selection">
+                            <Link href="/commercial/services/site-selection">
                                 <a>Site Selection <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/1031_Exchanges">
+                            <Link href="/commercial/services/1031-exchanges">
                                 <a>1031 Exchanges <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>

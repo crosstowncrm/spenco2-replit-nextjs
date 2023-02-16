@@ -13,6 +13,8 @@ import {
     AccordionItemButton
 } from 'react-accessible-accordion';
 
+
+
 export default function FaqPage({ faqs }) {
     console.log(faqs);
     return (
@@ -39,13 +41,11 @@ export default function FaqPage({ faqs }) {
                                 <AccordionItem key={i}>
                                 <AccordionItemHeading>
                                     <AccordionItemButton>
-                                        {val.attributes.faqFields.faqQuestion}
-                                        test question
+                                        {val.attributes.faqQuestion}
                                     </AccordionItemButton>
                                 </AccordionItemHeading>
                                 <AccordionItemPanel>
-                                    <p>{val.attributes.faqFields.faqAnswer}</p>
-                                    <p>test</p>
+                                    <p>{val.attributes.faqAnswer}</p>
                                 </AccordionItemPanel>
                                 </AccordionItem>
                             )

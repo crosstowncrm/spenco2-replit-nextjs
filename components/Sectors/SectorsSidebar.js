@@ -19,32 +19,32 @@ const SectorsSidebar = () => {
 
                     <ul>
                         <li>
-                            <Link href="/commercial/services/Multifamily">
+                            <Link href="/commercial/services/multifamily">
                                 <a>Multifamily <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Office">
+                            <Link href="/commercial/services/office">
                                 <a>Office <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Retail">
+                            <Link href="/commercial/services/retail">
                                 <a>Retail <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Land">
+                            <Link href="/commercial/services/land">
                                 <a>Land <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Industrial">
+                            <Link href="/commercial/services/industrial">
                                 <a>Industrial <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/commercial/services/Self_Storage">
+                            <Link href="/commercial/services/self-storage">
                                 <a>Self Storage <i className="fas fa-chevron-right"></i></a>
                             </Link>
                         </li>

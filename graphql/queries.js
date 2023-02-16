@@ -25,6 +25,30 @@ query {
   }
 `;
 
+const GET_ALL_SERVICE_SLUGS = gql`
+  query {
+    services {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+
+const GET_ALL_SECTOR_SLUGS = gql`
+  query {
+    sectors {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+
 const GET_ALL_POSTS = gql`
 query {
   posts {
@@ -107,4 +131,112 @@ const GET_POSTS_BY_TAG = gql`
   }
 `;
 
-export { GET_ALL_POSTS, GET_INDIVIDUAL_POST, GET_ALL_SLUGS, GET_ALL_TAG_SLUGS, GET_POSTS_BY_TAG };
+const GET_ALL_SERVICES = gql`
+  query {
+    services {
+      data {
+        id
+        attributes {
+          serviceName
+          slug
+          serviceContent
+          serviceSummary
+          serviceBanner {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          updatedAt
+        }
+      }
+    }
+  }
+`
+
+const GET_SERVICE_BY_SLUG = gql`
+  query ($slugUrl: String!) {
+    services(filters: {slug: { eq: $slugUrl } }) {
+      data {
+        id
+        attributes {
+          serviceName
+          slug
+          serviceContent
+          serviceSummary
+          serviceBanner {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          updatedAt
+        }
+      }
+    }
+  }
+`
+
+const GET_ALL_SECTORS = gql`
+  query {
+    sectors {
+      data {
+        attributes {
+          sectorName
+          sectorSummary
+          sectorContent
+          slug
+          updatedAt
+          sectorBanner {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+const GET_SECTOR_BY_SLUG = gql`
+  query ($slugUrl: String!) {
+    sectors(filters: {slug: { eq: $slugUrl } }) {
+      data {
+        id
+        attributes {
+          sectorName
+          sectorSummary
+          sectorContent
+          slug
+          updatedAt
+          sectorBanner {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+
+export { 
+  GET_ALL_POSTS, 
+  GET_INDIVIDUAL_POST, 
+  GET_ALL_SLUGS, 
+  GET_ALL_TAG_SLUGS, 
+  GET_POSTS_BY_TAG,
+  GET_ALL_SERVICE_SLUGS, 
+  GET_ALL_SECTOR_SLUGS,
+  GET_SERVICE_BY_SLUG,
+  GET_ALL_SERVICES,
+  GET_SECTOR_BY_SLUG,
+  GET_ALL_SECTORS,
+  };

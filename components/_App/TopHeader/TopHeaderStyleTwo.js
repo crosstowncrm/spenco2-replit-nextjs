@@ -8,21 +8,21 @@ const TopHeaderStyleTwo = () => {
                     <div className="row align-items-center">
                         <div className="col-lg-5 col-md-4">
                             <ul className="top-header-social-links">
-                                <li><a href="https://www.facebook.com/" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://www.instagram.com/" target="_blank"><i className="fab fa-instagram"></i></a></li>
-                                <li><a href="https://twitter.com/" target="_blank"><i className="fab fa-twitter"></i></a></li>
-                                <li><a href="https://www.linkedin.com/" target="_blank"><i className="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="https://www.facebook.com/SpencerCommercial" target="_blank"><i className="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/selfstoragebuyer/" target="_blank"><i className="fab fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/buyselfstorage" target="_blank"><i className="fab fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/company/spencer-commercial-group" target="_blank"><i className="fab fa-linkedin-in"></i></a></li>
                             </ul>
                         </div>
 
                         <div className="col-lg-7 col-md-8">
                             <div className="top-header-contact-info text-end">
-                                <a href="mailto:hello@gbay.com" className="email">
-                                    <i className="far fa-envelope"></i> hello@gbay.com
+                                <a href="mailto:info@spenco.us" className="email">
+                                    <i className="far fa-envelope"></i> info@spenco.us
                                 </a>
-                                <a href="tel:+44-45789-5789" className="number">
+                                <a href="tel:+1-6788881612" className="number">
                                     <i className="fas fa-phone-alt"></i> 
-                                    (+44) - 45789 - 5789
+                                    (+1) 678.888.1612
                                 </a>
                                 <div className="lang-switcher">
                                     <label><i className="fas fa-globe"></i></label>
